@@ -2,7 +2,7 @@
 @import url("https://css.gg/home-alt.css");
 :root { --main-color: #3875CE; --table-head-color: #FAFAFA; --border-color: #DADCE0; --font-main: #414141; --font-sub: #5A5A5A; --font-hint: #8C8C8C; }
 
-* { margin: 0; padding: 0; font-family: 'NanumGothic'; }
+* { margin: 0; padding: 0; font-family: 'NanumGothic', sans-serif; }
 
 .content { width: 1200px; margin: auto; display: flex; flex-wrap: wrap; }
 

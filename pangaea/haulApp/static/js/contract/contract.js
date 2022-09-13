@@ -28,16 +28,19 @@ $(document).ready(function(){
             $("#sec_price").find("h5").text("매매가");
             $("#sec_price").find(".item-name").find("p").text("매매가");
             $("#sec_rental").hide();
+            $("#sec_middle_pay").show();
         }
         else if (contract_type == 2) {
             $("#sec_price").find("h5").text("보증금");
             $("#sec_price").find(".item-name").find("p").text("보증금");
             $("#sec_rental").hide();
+            $("#sec_middle_pay").hide();
         }
         else if (contract_type == 3) {
             $("#sec_price").find("h5").text("보증금");
             $("#sec_price").find(".item-name").find("p").text("보증금");
             $("#sec_rental").show();
+            $("#sec_middle_pay").hide();
         }
     })
 

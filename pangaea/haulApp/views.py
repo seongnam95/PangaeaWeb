@@ -35,7 +35,7 @@ def temp_data(data=None):
                   }
 
     # prop_type = prop_types[]
-    prop = {'kind': contract_kind, 'type': a, 'transaction': '월세'}
+    prop = {'kind': contract_kind, 'type': "a", 'transaction': '월세'}
 
     context = {'data': data, 'prop': prop}
     return context
