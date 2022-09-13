@@ -1,0 +1,68 @@
+@import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css');
+@import url('https://css.gg/home-alt.css');
+
+
+:root {
+    --main-color: #3875CE;
+    --table-head-color: #FAFAFA;
+    --border-color: #DADCE0;
+    --font-main: #414141;
+    --font-sub: #5A5A5A;
+    --font-hint: #8C8C8C;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'NanumGothic';
+}
+
+.content {
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content-box {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 1.2em;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    width: 100%;
+
+    &.ad {
+        height: 110px;
+        background-color: rgb(245,245,245);
+    }
+
+    &.profile {
+        width: 200px;
+        height: 300px;
+        background-color: var(--table-head-color);
+        align-items: center;
+        text-align: center;
+    }
+
+    &.status {
+        flex: 1;
+        height: 500px;
+    }
+}
+
+.profile__btn-box {
+    display: flex;
+    justify-content: space-between;
+
+    .profile__icon-box {
+        border-radius: 8px;
+        box-shadow: 0px 5px 8px 0px rgba(149, 157, 165, 0.3);
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
