@@ -41,11 +41,14 @@ INSTALLED_APPS = [
     'haulApp.apps.HaulappConfig',
     'sass_processor',
     'rest_framework',
+    'rest_framework_api_key',
+    'pangaeaApi',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        # 전역 API
+        'rest_framework.permissions.IsAuthenticated',
     ]
 }
 
@@ -119,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
 TIME_ZONE = 'Asia/Seoul'
 
