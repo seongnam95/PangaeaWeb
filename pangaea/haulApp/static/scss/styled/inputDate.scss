@@ -26,7 +26,9 @@
         border-color: var(--main-color);
     }
 
-    &::placeholder { color: var(--font-hint); }
+    &::placeholder {
+        color: var(--font-hint);
+    }
 
     &.ipt-date {
         padding-right: 40px;
@@ -60,6 +62,7 @@
     padding: 1em;
     font-family: 'NanumGothic', sans-serif;
     box-shadow: 0px 3px 8px 0px rgba(149, 157, 165, 0.5);
+    background-color: #fff;
 
     .cal-topbar {
         display: flex;
@@ -96,8 +99,13 @@
             width: 44px;
             height: 20px;
 
-            &:first-child { color: #FF9090; }
-            &:last-child { color: #7ED5E4; }
+            &:first-child {
+                color: #FF9090;
+            }
+
+            &:last-child {
+                color: #7ED5E4;
+            }
         }
     }
 
@@ -108,7 +116,7 @@
         width: 40px;
         height: 40px;
 
-        &:hover:not(.date-week){
+        &:hover:not(.date-week) {
             cursor: pointer;
             color: var(--main-color);
             font-weight: bold;

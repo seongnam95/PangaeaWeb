@@ -11,12 +11,14 @@
         <link href="{% sass_src 'scss/contract/contract.scss' %}" rel="stylesheet" type="text/css" />
         <link href="{% sass_src 'scss/public/nice-select2.scss' %}" rel="stylesheet" type="text/css" />
         <link href="{% sass_src 'scss/public/field_radio_btn.scss' %}" rel="stylesheet" type="text/css" />
-        <link href="{% sass_src 'scss/public/clean_date.scss' %}" rel="stylesheet" type="text/css" />
+        <link href="{% sass_src 'scss/styled/inputDate.scss' %}" rel="stylesheet" type="text/css" />
         
-        <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
-
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js' integrity='sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==' crossorigin='anonymous'></script>
         <script src="/static/js/contract/contract.js" type="text/javascript"></script>
         <script src="/static/js/lib/nice-select2.js" type="module"></script>
+        <script src="/static/js/styled/inputDate.js" type="module"></script>
+
+        <script src="https://kit.fontawesome.com/31695fd4b3.js" crossorigin="anonymous"></script>
     </head>
 
     {% include 'header.html' %}
@@ -304,7 +306,10 @@
                             </div>
                             <div class="inner-section space-form">
                                 <div class="item-name"><p>지불일</p></div>
-                                <input class="clean-date" type="date">
+                                <div class="form-date">
+                                    <input type="text" class="txt ipt-date" id="ipt_date">
+                                    <button name="btnDate" id="btn_date"><i class="fa-regular fa-calendar"></i></button>
+                                </div>
                             </div>
                         </div>
                         <div class="content-row">
@@ -318,7 +323,10 @@
                             </div>
                             <div class="inner-section space-form">
                                 <div class="item-name"><p>지불일</p></div>
-                                <input class="" type="date">
+                                <div class="form-date">
+                                    <input type="text" class="txt ipt-date" id="ipt_date">
+                                    <button name="btnDate" id="btn_date"><i class="fa-regular fa-calendar"></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -355,28 +363,6 @@
                                 <div class="form-date">
                                     <input type="text" class="txt ipt-date" id="ipt_date">
                                     <button name="btnDate" id="btn_date"><i class="fa-regular fa-calendar"></i></button>
-                                </div>
-                                <div class="pop-calendar" id="pop_calendar">
-                                    <div class="cal-topbar">
-                                        <button onclick="beforem()"><i class="fa-solid fa-chevron-left"></i></button>
-                                        <div class="box-yearmonth">
-                                            <button id="btn_year">2022년</button>
-                                            <button id="btn_month">9월</button>
-                                        </div>
-                                        <button onclick="nextm()"><i class="fa-solid fa-chevron-right"></i></button>
-                                    </div>
-                                    <div class="cal-content">
-                                        <div class="cal-week-bar">
-                                            <div>일</div>
-                                            <div>월</div>
-                                            <div>화</div>
-                                            <div>수</div>
-                                            <div>목</div>
-                                            <div>금</div>
-                                            <div>토</div>
-                                        </div>
-                                        <table id="pop_calendar_table"></table>
-                                    </div>
                                 </div>
                             </div>
                         </div>

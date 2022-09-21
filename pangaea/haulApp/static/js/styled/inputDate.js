@@ -24,7 +24,7 @@ $(document).ready(function () {
         
         if ($(select_date).text()) {
             today.setDate($(select_date).text());
-            v_today = toStringByFormatting(today);
+            var v_today = toStringByFormatting(today);
             parent_ipt.val(v_today);
             
             $("#pop_calendar").css("display", "none");
@@ -101,15 +101,16 @@ function build() {
     var row = null;
     row = tbcal.insertRow();
     var cnt = 0;
+    var cell = {}
 
     // 1일 시작칸 찾기
-    for (i = 0; i < nMonth.getDay(); i++)  {
+    for (var i = 0; i < nMonth.getDay(); i++)  {
         cell = row.insertCell();
         cnt = cnt + 1;
     }
 
     // 달력 출력
-    for (i = 1; i <= lastDate.getDate(); i++) { 
+    for (var i = 1; i <= lastDate.getDate(); i++) { 
         cell = row.insertCell();
         cell.innerHTML = i;
 
