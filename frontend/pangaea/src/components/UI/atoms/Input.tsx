@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const StyledInput = styled.input`
+
+const StyledInput = styled.input.attrs({ autocomplete : "off"})`
   width: ${(props) => (props.width)};
   color: var(--font-sub);
   font-size: 14px;
@@ -10,7 +11,7 @@ const StyledInput = styled.input`
   border-radius: 3px;
   outline: none;
   transition: border .3s ease;
-
+  
   &:focus {
     border-color: var(--main-color);
   }

@@ -4,7 +4,7 @@ import Input from "../atoms/Input";
 import InButton from "../atoms/InButton";
 
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
-import DateSelector from "./DateSelector";
+import DateSelector from "../atoms/DateSelector";
 
 export function DateInput() {
   const [date, setDate] = useState(new Date());
@@ -21,7 +21,7 @@ export function DateInput() {
 
   return (
     <StyledDateInput>
-      <Input width='160px;' value={convDateToString(date)} readOnly />
+      <Input onClick={handleOnClick} width='160px;' value={convDateToString(date)} readOnly />
       <InButton icon={ faCalendar } onClick={handleOnClick}/>
       {isOpen ? <DateSelector selectDate={date} onClick={handleSelcetedDate}/> : null}
     </StyledDateInput>
@@ -29,8 +29,9 @@ export function DateInput() {
 }
 
 const StyledDateInput = styled.div`
-  display: inline-flex;
   position: relative;
+  height: 40px;
+  width: 160px;
 
   & > input {
     padding-right: 42px;

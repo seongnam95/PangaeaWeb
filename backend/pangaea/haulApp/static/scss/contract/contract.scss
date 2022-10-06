@@ -288,7 +288,7 @@
     transition: border .3s ease;
 
     &::placeholder {
-        color: var(--font-hint);;
+        color: var(--font-hint);
     }
     &:focus {
         outline: none;

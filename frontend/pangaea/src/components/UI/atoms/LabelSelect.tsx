@@ -18,7 +18,7 @@ interface ValidRefTarget {
 }
 
 export function LabelSelect({options, value, onChange}: LabelSelectPorps) {
-  const optionRef = useRef();
+  const optionRef = useRef<HTMLUListElement>(document.createElement('ul'));
 
   const [isOpen, setIsOpen] = useState(false);
   const [currentValue, setCurrentValue] = useState(value);
@@ -28,7 +28,12 @@ export function LabelSelect({options, value, onChange}: LabelSelectPorps) {
 
   useOnClickOutside(optionRef, () => setIsOpen(false))
 
-  const handleOnClick = () => { setIsOpen(isOpen => !isOpen);};
+  const handleOnClick = () => { setIsOpen(isOpen => !isOpen); };
+  
+  useEffect(() => {
+    if (isOpen) {
+    }
+  }, [isOpen])
 
   const handleValueChange = (value:OptionsType) => {
     setCurrentValue(value);
@@ -48,7 +53,7 @@ export function LabelSelect({options, value, onChange}: LabelSelectPorps) {
         {options.map((value) => 
           <li key={value.value} onClick={()=>{ handleValueChange(value); }}>
             {value.label}
-          </li> )}
+          </li>)}
       </StyledOptions>
     )
   }
@@ -108,10 +113,11 @@ const StyledLabelSelect = styled.button`
   }
 `
 
-const StyledOptions = styled.ul<{selectIdx?:number}>`
+const StyledOptions = styled.ul<{ selectIdx?: number }>`
   position: absolute;
   max-height: 210px;
   overflow-y: scroll;
+  scroll-behavior: smooth;
   top: 35px;
   left: -3px;
   border: 1px solid var(--border-color);

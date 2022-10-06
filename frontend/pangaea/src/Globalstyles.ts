@@ -14,6 +14,33 @@ const GlobalStyle = createGlobalStyle`
     --font-hint-dark: #646464;
   }
 
+  @font-face {
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 300;
+    src: url("../src/assets/fonts/NanumGothicLight.woff2") format('font-woff2'),
+    url("../src/assets/fonts/NanumGothicLight.woff") format('font-woff'),
+    url("../src/assets/fonts/NanumGothicLight.otf") format('otf')
+  }
+
+  @font-face {
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: normal;
+    src: url("../src/assets/fonts/NanumGothic.woff2") format('font-woff2'),
+    url("../src/assets/fonts/NanumGothic.woff") format('font-woff'),
+    url("../src/assets/fonts/NanumGothic.otf") format('otf')
+  }
+
+  @font-face {
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: bold;
+    src: url("../src/assets/fonts/NanumGothicBold.woff2") format('font-woff2'),
+    url("../src/assets/fonts/NanumGothicBold.woff") format('font-woff'),
+    url("../src/assets/fonts/NanumGothicBold.otf") format('truetype')
+  }
+  
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -30,9 +57,9 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
-    font: inherit;
     vertical-align: baseline;
+    font-family: 'Nanum Gothic';
+    font-size: 100%;
   }
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure,
