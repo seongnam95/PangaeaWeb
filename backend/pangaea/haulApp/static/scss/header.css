@@ -1,0 +1,115 @@
+@import url("https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css");
+@import url("https://css.gg/home-alt.css");
+:root {
+  --main-color: #3875CE;
+  --table-head-color: #FAFAFA;
+  --border-color: #DADCE0;
+  --font-main: #414141;
+  --font-sub: #5A5A5A;
+  --font-hint: #8C8C8C;
+}
+
+header {
+  width: 100%;
+  display: block;
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
+  z-index: 100;
+}
+
+.header {
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.gnb__logo {
+  display: flex;
+  align-items: center;
+  min-width: 100px;
+  height: 70px;
+  margin-right: 40px;
+}
+
+#gnb__nav {
+  width: 100%;
+  height: 70px;
+  display: flex;
+}
+#gnb__nav ul {
+  height: 100%;
+  list-style-type: none;
+}
+#gnb__nav .gnb__menu > li {
+  float: left;
+  padding-left: 25px;
+  padding-right: 25px;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+}
+#gnb__nav .gnb__menu > li .gnb__menu_btn {
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--font-main);
+}
+#gnb__nav .gnb__menu > li .gnb__menu_btn:hover {
+  font-weight: bold;
+  color: var(--main-color);
+}
+#gnb__nav .gnb__menu > li:hover .lnb__menu_section {
+  display: flex;
+  border-top: 1px solid var(--border-color);
+}
+
+.lnb__menu_section {
+  display: none;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  background-color: var(--table-head-color);
+  box-shadow: 0px 8px 8px 0px rgba(149, 157, 165, 0.1);
+}
+.lnb__menu_section .lnb__inner {
+  display: flex;
+  margin: 0 auto;
+  width: 1200px;
+}
+.lnb__menu_section .lnb__inner .lnb__info {
+  min-width: 300px;
+  min-height: 150px;
+  margin: auto;
+  border: 1px solid var(--border-color);
+}
+.lnb__menu_section .lnb__inner .lnb__list {
+  width: 100%;
+  display: flex;
+  margin-left: 80px;
+  margin-top: 20px;
+}
+.lnb__menu_section .lnb__inner .lnb__list .lnb__menu {
+  float: left;
+  width: 20%;
+  padding-right: 20px;
+}
+.lnb__menu_section .lnb__inner .lnb__list h3 {
+  height: 60px;
+  color: var(--font-main);
+  font-size: 16px;
+  text-align: left;
+}
+.lnb__menu_section .lnb__inner .lnb__list li {
+  line-height: 40px;
+  text-align: left;
+}
+.lnb__menu_section .lnb__inner .lnb__list li a {
+  font-size: 14px;
+  color: var(--font-sub);
+  text-decoration: none;
+}
+.lnb__menu_section .lnb__inner .lnb__list li:hover a {
+  color: var(--main-color);
+  transition: color 0.2s;
+}/*# sourceMappingURL=header.css.map */

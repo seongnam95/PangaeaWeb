@@ -13,7 +13,7 @@ export function DateInput() {
   const handleOnClick = () => {
     setIsOpen(isOpen => !isOpen);
   };
-  const handleSelcetedDate = (date: Date) => {
+  const handleSelectedDate = (date: Date) => {
     setDate(date);
     setIsOpen(false);
   };
@@ -21,9 +21,11 @@ export function DateInput() {
     return new Date(+date + 3240 * 10000).toISOString().split('T')[0];
   };
 
+  // ! INPUT name 확인 할 것
   return (
     <StyledDateInput>
       <Input
+        name="input"
         onClick={handleOnClick}
         width="160px;"
         value={convDateToString(date)}
@@ -31,7 +33,7 @@ export function DateInput() {
       />
       <InButton icon={faCalendar} onClick={handleOnClick} />
       {isOpen ? (
-        <DateSelector selectDate={date} onClick={handleSelcetedDate} />
+        <DateSelector selectDate={date} onClick={handleSelectedDate} />
       ) : null}
     </StyledDateInput>
   );

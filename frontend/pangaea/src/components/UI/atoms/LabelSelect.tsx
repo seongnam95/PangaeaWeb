@@ -6,9 +6,9 @@ export type OptionsType = {
   label: any;
 };
 
-interface LabelSelectPorps {
+interface LabelSelectProps {
   onChange?: (v: any) => void;
-  value?: OptionsType;
+  value: OptionsType;
   options: OptionsType[];
 }
 
@@ -16,7 +16,7 @@ interface ValidRefTarget {
   contains(target: EventTarget | null): any;
 }
 
-export function LabelSelect({ options, value, onChange }: LabelSelectPorps) {
+export function LabelSelect({ options, value, onChange }: LabelSelectProps) {
   const optionRef = useRef<HTMLUListElement>(document.createElement('ul'));
 
   const [isOpen, setIsOpen] = useState(false);

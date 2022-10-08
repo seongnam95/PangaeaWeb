@@ -1,45 +1,153 @@
-import Input from './Input';
 import styled from 'styled-components';
 import { useEffect, useRef, useState } from 'react';
+import { FieldProps } from 'formik';
 
-interface SelectorProps {}
+export type OptionType = {
+  value: string;
+  label: any;
+};
 
-export function Selector({}: SelectorProps) {
-  const [isOpen, setIsOpen] = useState(false);
+interface SelectorProps extends FieldProps {
+  options: OptionType[];
+  placeholder?: string;
+}
+
+export function Selector({ field, form, options, placeholder }: SelectorProps) {
+  const parentRef = useRef();
   const optionRef = useRef<HTMLUListElement>(document.createElement('ul'));
-  useOnClickOutside(optionRef, () => setIsOpen(false), isOpen);
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentValue, setCurrentValue] = useState<OptionType>({
+    value: null,
+    label: '(선택)',
+  });
+
+  useEffect(() => {
+    if (!placeholder) setCurrentValue({ value: null, label: '(선택)' });
+    else setCurrentValue({ value: placeholder, label: placeholder });
+  }, [placeholder]);
+
+  // Event Handler
   const handleOnclick = () => {
     setIsOpen(isOpen => !isOpen);
   };
 
+  const handleOnChange = (value: OptionType) => {
+    setCurrentValue(value);
+    form.setFieldValue(field.name, value);
+  };
+
+  // outside clicked
+  useOnClickOutside(parentRef, optionRef, () => setIsOpen(false), isOpen);
+
   return (
-    <StyledSelector className={isOpen ? 'open' : ''} onClick={handleOnclick}>
-      {isOpen ? <Options /> : null}
-    </StyledSelector>
+    <>
+      <StyledSelector
+        ref={parentRef}
+        className={isOpen ? 'open' : ''}
+        onClick={handleOnclick}
+      >
+        <div className={'control-label'}>{currentValue.label}</div>
+        {isOpen ? (
+          <StyledOptions>
+            <ul>
+              {options.map((option, idx) => (
+                <li key={idx} onClick={() => handleOnChange(option)}>
+                  {option.label}
+                </li>
+              ))}
+            </ul>
+          </StyledOptions>
+        ) : null}
+      </StyledSelector>
+    </>
   );
 }
 
 // Options
-const Options = () => {
+
+interface OptionProps {
+  options: OptionType[];
+  onChange?: (value: any) => void;
+}
+
+const Options = ({ options, onChange }: OptionProps) => {
+  const handleOnClick = (value: OptionType) => {
+    if (onChange) onChange(value);
+  };
+
   return (
     <StyledOptions>
       <ul>
-        <li>1번 콘텐츠</li>
-        <li>2번 콘텐츠</li>
-        <li>3번 콘텐츠</li>
+        {options.map(option => (
+          <li key={option.value} onClick={() => handleOnClick(option)}>
+            {option.label}
+          </li>
+        ))}
       </ul>
     </StyledOptions>
   );
 };
 
+// out side clicked module
+
+interface ValidRefTarget {
+  contains(target: EventTarget | null): any;
+}
+
+export function useOnClickOutside(
+  parent: React.RefObject<ValidRefTarget>,
+  ref: React.RefObject<ValidRefTarget>,
+  handler: (event: MouseEvent | TouchEvent) => void,
+  isOpen?: boolean
+) {
+  useEffect(() => {
+    const listener = (event: MouseEvent | TouchEvent) => {
+      if (!ref.current || ref.current.contains(event.target)) {
+        return;
+      } else if (!ref.current || parent.current.contains(event.target)) {
+        return;
+      }
+      handler(event);
+    };
+
+    document.addEventListener('mousedown', listener);
+    document.addEventListener('touchstart', listener);
+
+    return () => {
+      document.removeEventListener('mousedown', listener);
+      document.removeEventListener('touchstart', listener);
+    };
+  }, [ref, handler]);
+}
+
+// styled
+
 const StyledSelector = styled.div`
   position: relative;
+  display: inline-flex;
   height: 35px;
-  width: 120px;
+  min-width: 80px;
   border: 1px solid var(--border-color-dark);
   border-radius: 3px;
+  align-items: center;
+  transition: border 0.3s ease;
+  user-select: none;
+  -webkit-user-select: none;
   cursor: pointer;
+
+  &:hover {
+    border-color: var(--main-color);
+  }
+
+  .control-label {
+    position: absolute;
+    overflow: hidden;
+    max-width: calc(100% - 35px);
+    left: 7px;
+    color: var(--font-sub);
+    font-size: 14px;
+  }
 
   &:after {
     border-bottom: 2px solid gray;
@@ -84,7 +192,8 @@ const StyledOptions = styled.div`
     li {
       font-size: 14px;
       color: var(--font-sub);
-      padding: 8px;
+      padding: 8px 10px 8px 10px;
+      white-space: nowrap;
 
       :hover {
         color: var(--main-color);
@@ -93,32 +202,3 @@ const StyledOptions = styled.div`
     }
   }
 `;
-
-interface ValidRefTarget {
-  contains(target: EventTarget | null): any;
-}
-
-export function useOnClickOutside(
-  ref: React.RefObject<ValidRefTarget>,
-  handler: (event: MouseEvent | TouchEvent) => void,
-  isOpen?: boolean
-) {
-  useEffect(() => {
-    const listener = (event: MouseEvent | TouchEvent) => {
-      if (isOpen) {
-        if (!ref.current || ref.current.contains(event.target)) {
-          return;
-        }
-        handler(event);
-      }
-    };
-
-    document.addEventListener('mousedown', listener);
-    document.addEventListener('touchstart', listener);
-
-    return () => {
-      document.removeEventListener('mousedown', listener);
-      document.removeEventListener('touchstart', listener);
-    };
-  }, [ref, handler]);
-}
