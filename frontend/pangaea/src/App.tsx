@@ -5,6 +5,8 @@ import Input from './components/UI/atoms/Input';
 import { CheckBox } from './components/UI/atoms/CheckBox';
 import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
+import { Selector } from './components/UI/atoms/Selector';
+import { Standard } from './components/pages/contract/standard';
 
 function App() {
   const options: RadioType[] = [
@@ -13,15 +15,14 @@ function App() {
     { name: '3', value: '세엣' },
   ];
 
+  const onClickTest = () => {
+    console.log('value');
+  };
+
   return (
     <>
       <GlobalStyle />
-      <GridContainer>
-        <Radio options={options} />
-        <DateInput />
-        <Input placeholder="예)" />
-        <CheckBox id={'asd'} value={options[0]} />
-      </GridContainer>
+      <Selector />
     </>
   );
 }

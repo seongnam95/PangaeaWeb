@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -38,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: bold;
     src: url("../src/assets/fonts/NanumGothicBold.woff2") format('font-woff2'),
     url("../src/assets/fonts/NanumGothicBold.woff") format('font-woff'),
-    url("../src/assets/fonts/NanumGothicBold.otf") format('truetype')
+    url("../src/assets/fonts/NanumGothicBold.otf") format('otf')
   }
   
   html, body, div, span, applet, object, iframe,

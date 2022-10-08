@@ -8,18 +8,26 @@ interface CheckBoxProps {
   };
   id?: string;
   checked?: boolean;
+  onChange?: (checked: boolean) => void;
 }
 
-export function CheckBox({ value, id, checked }: CheckBoxProps) {
+export function CheckBox({ value, id, checked, onChange }: CheckBoxProps) {
   const [Checked, setChecked] = useState(checked || false);
 
   const handleOnChange = (e: any) => {
     setChecked(!Checked);
+    console.log(Checked);
+    if (onChange) onChange(Checked);
   };
 
   return (
     <StyledCheckBox>
-      <input id={id} type="checkbox" onChange={handleOnChange} />
+      <input
+        id={id}
+        type="checkbox"
+        checked={Checked}
+        onChange={handleOnChange}
+      />
       <label htmlFor={id}>
         <span>
           <svg width="12px" height="10px" viewBox="0 0 12 10">

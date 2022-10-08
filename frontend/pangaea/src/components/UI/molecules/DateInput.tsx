@@ -1,31 +1,40 @@
-import styled from "styled-components";
-import { useState } from "react";
-import Input from "../atoms/Input";
-import InButton from "../atoms/InButton";
+import styled from 'styled-components';
+import { useState } from 'react';
+import Input from '../atoms/Input';
+import InButton from '../atoms/InButton';
 
-import { faCalendar } from "@fortawesome/free-solid-svg-icons";
-import DateSelector from "../atoms/DateSelector";
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+import DateSelector from '../atoms/DateSelector';
 
 export function DateInput() {
   const [date, setDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleOnClick = () => { setIsOpen(isOpen => !isOpen);};
-  const handleSelcetedDate = (date : Date) => { 
-    setDate(date); 
+  const handleOnClick = () => {
+    setIsOpen(isOpen => !isOpen);
+  };
+  const handleSelcetedDate = (date: Date) => {
+    setDate(date);
     setIsOpen(false);
-  }
-  const convDateToString = (date : Date) => {
-    return new Date(+ date + 3240 * 10000).toISOString().split("T")[0];
-  }
+  };
+  const convDateToString = (date: Date) => {
+    return new Date(+date + 3240 * 10000).toISOString().split('T')[0];
+  };
 
   return (
     <StyledDateInput>
-      <Input onClick={handleOnClick} width='160px;' value={convDateToString(date)} readOnly />
-      <InButton icon={ faCalendar } onClick={handleOnClick}/>
-      {isOpen ? <DateSelector selectDate={date} onClick={handleSelcetedDate}/> : null}
+      <Input
+        onClick={handleOnClick}
+        width="160px;"
+        value={convDateToString(date)}
+        readOnly
+      />
+      <InButton icon={faCalendar} onClick={handleOnClick} />
+      {isOpen ? (
+        <DateSelector selectDate={date} onClick={handleSelcetedDate} />
+      ) : null}
     </StyledDateInput>
-  )
+  );
 }
 
 const StyledDateInput = styled.div`
@@ -33,13 +42,9 @@ const StyledDateInput = styled.div`
   height: 40px;
   width: 160px;
 
-  & > input {
-    padding-right: 42px;
-  }
-  
   & > button {
     position: absolute;
-    left: calc(100% - 35px);
+    left: calc(100% - 37px);
     top: 2px;
   }
-`
+`;

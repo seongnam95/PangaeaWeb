@@ -1,94 +1,99 @@
-import styled from "styled-components";
-import React, { useState, useEffect, useRef } from "react";
-
+import styled from 'styled-components';
+import React, { useState, useEffect, useRef } from 'react';
 
 export type OptionsType = {
-  value: number,
-  label: any,
-}
+  value: number;
+  label: any;
+};
 
 interface LabelSelectPorps {
-  onChange?: (v : any) => void,
-  value?: OptionsType,
-  options: OptionsType[],
+  onChange?: (v: any) => void;
+  value?: OptionsType;
+  options: OptionsType[];
 }
 
 interface ValidRefTarget {
   contains(target: EventTarget | null): any;
 }
 
-export function LabelSelect({options, value, onChange}: LabelSelectPorps) {
+export function LabelSelect({ options, value, onChange }: LabelSelectPorps) {
   const optionRef = useRef<HTMLUListElement>(document.createElement('ul'));
 
   const [isOpen, setIsOpen] = useState(false);
   const [currentValue, setCurrentValue] = useState(value);
 
   // value 값 변경 시 'currentValue' 적용
-  useEffect(() => { setCurrentValue(value); }, [value]);
-
-  useOnClickOutside(optionRef, () => setIsOpen(false))
-
-  const handleOnClick = () => { setIsOpen(isOpen => !isOpen); };
-  
   useEffect(() => {
-    if (isOpen) {
-    }
-  }, [isOpen])
+    setCurrentValue(value);
+  }, [value]);
 
-  const handleValueChange = (value:OptionsType) => {
+  useOnClickOutside(optionRef, () => setIsOpen(false));
+
+  const handleOnClick = () => {
+    setIsOpen(isOpen => !isOpen);
+  };
+
+  const handleValueChange = (value: OptionsType) => {
     setCurrentValue(value);
     if (onChange) {
       onChange(value);
     }
   };
 
-  const getItemIndex = (item : OptionsType):number => {
-    var index = options.findIndex(v => v.value === item.value)
-    return index
-  }
+  const getItemIndex = (item: OptionsType): number => {
+    var index = options.findIndex(v => v.value === item.value);
+    return index;
+  };
 
   const Options = () => {
     return (
-      <StyledOptions ref={optionRef} selectIdx={getItemIndex(currentValue)+1}>
-        {options.map((value) => 
-          <li key={value.value} onClick={()=>{ handleValueChange(value); }}>
+      <StyledOptions ref={optionRef} selectIdx={getItemIndex(currentValue) + 1}>
+        {options.map(value => (
+          <li
+            key={value.value}
+            onClick={() => {
+              handleValueChange(value);
+            }}
+          >
             {value.label}
-          </li>)}
+          </li>
+        ))}
       </StyledOptions>
-    )
-  }
+    );
+  };
 
   return (
     <>
       <StyledLabelSelect onClick={handleOnClick}>
         <label>{currentValue.label}</label>
-        {isOpen ? <Options/> : null}
+        {isOpen ? <Options /> : null}
       </StyledLabelSelect>
     </>
-  )
+  );
 }
 
 // module
 
-export function useOnClickOutside(ref: React.RefObject<ValidRefTarget>, handler: (event: MouseEvent | TouchEvent)=>void ) {
-  useEffect(
-    () => {
-      const listener = (event: MouseEvent | TouchEvent) => {
-        if (!ref.current || ref.current.contains(event.target)) { return }
-        handler(event)
+export function useOnClickOutside(
+  ref: React.RefObject<ValidRefTarget>,
+  handler: (event: MouseEvent | TouchEvent) => void
+) {
+  useEffect(() => {
+    const listener = (event: MouseEvent | TouchEvent) => {
+      if (!ref.current || ref.current.contains(event.target)) {
+        return;
       }
+      handler(event);
+    };
 
-      document.addEventListener('mousedown', listener)
-      document.addEventListener('touchstart', listener)
+    document.addEventListener('mousedown', listener);
+    document.addEventListener('touchstart', listener);
 
-      return () => {
-        document.removeEventListener('mousedown', listener)
-        document.removeEventListener('touchstart', listener)
-      }
-    },
-
-    [ref, handler]
-  )
+    return () => {
+      document.removeEventListener('mousedown', listener);
+      document.removeEventListener('touchstart', listener);
+    };
+  }, [ref, handler]);
 }
 
 // styled
@@ -108,10 +113,10 @@ const StyledLabelSelect = styled.button`
     font-size: 18px;
   }
 
-  label:hover{
+  label:hover {
     color: var(--main-color);
   }
-`
+`;
 
 const StyledOptions = styled.ul<{ selectIdx?: number }>`
   position: absolute;
@@ -136,8 +141,8 @@ const StyledOptions = styled.ul<{ selectIdx?: number }>`
     padding: 5px 10px 5px 10px;
     color: var(--font-sub);
     white-space: nowrap;
-    
-    :nth-child(${(props) => props.selectIdx}) {
+
+    :nth-child(${props => props.selectIdx}) {
       font-weight: 700;
     }
 
@@ -146,4 +151,4 @@ const StyledOptions = styled.ul<{ selectIdx?: number }>`
       background-color: var(--hover-background);
     }
   }
-`
+`;
