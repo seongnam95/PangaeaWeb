@@ -12,7 +12,7 @@ export interface IconProps {
   onClick?: () => void;
 }
 
-const NORMAL_ICON_COLOR = '#757575';
+const NORMAL_ICON_COLOR = '#fff';
 
 function Icon({ icon, color, size, onClick }: IconProps): ReactElement {
   const SVGIcon = icons[icon];

@@ -98,7 +98,7 @@ const StyledNavHeader = styled.div<{ folding?: boolean }>`
   position: relative;
   width: 100%;
   height: 50px;
-  border-bottom: 1px solid var(--color-border-light);
+  border-radius: 15px;
   align-items: center;
   padding: 0.5em;
   overflow: hidden;
@@ -114,38 +114,40 @@ const StyledNavHeader = styled.div<{ folding?: boolean }>`
     }
 
     &.nav-header-label {
-      color: var(--color-font-light);
+      color: var(--text-color);
       font-size: var(--font-size-s);
     }
   }
 
   &.open {
     .nav-header-label {
-      color: var(--color-blue-light);
       font-weight: 700;
     }
 
     .nav-header-icon {
       margin: 0 15px 0 15px;
       svg {
-        fill: var(--color-blue-light) !important ;
       }
     }
+  }
+
+  :hover {
+    background-color: var(--gray-color-light);
   }
 
   ${props =>
     props.folding &&
     css`
       ::after {
-        border-bottom: 2px solid gray;
-        border-right: 2px solid gray;
+        border-bottom: 2px solid var(--text-color);
+        border-right: 2px solid var(--text-color);
         content: '';
         display: block;
         height: 5px;
         margin-top: -4px;
         pointer-events: none;
         position: absolute;
-        right: 12px;
+        right: 17px;
         top: 50%;
         transform-origin: 66% 66%;
         transform: rotate(45deg);

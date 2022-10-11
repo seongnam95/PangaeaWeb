@@ -10,7 +10,6 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Header />
       <SideNavigation />
     </>
   );

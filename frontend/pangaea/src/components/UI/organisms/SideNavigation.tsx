@@ -15,7 +15,7 @@ export default function SideNavigation() {
 
   return (
     <StyledSideNavigation>
-      <StyledNavHeader>관리센터</StyledNavHeader>
+      <StyledHeader>관리센터</StyledHeader>
       <NavContent
         icon="people"
         items={property_items}
@@ -36,7 +36,7 @@ export default function SideNavigation() {
 const StyledSideNavigation = styled.div`
   width: 210px;
   height: 100vh;
-  background-color: var(--color-bg-gray-light);
+  background-color: var(--primary-color);
   border-right: 1px solid var(--color-border-light);
   transition: all 0.3s ease;
   -webkit-user-select: none;
@@ -51,13 +51,13 @@ const StyledSideNavigation = styled.div`
   }
 `;
 
-const StyledNavHeader = styled.div`
+const StyledHeader = styled.div`
   width: 100%;
   height: 70px;
   padding: 1em;
   font-size: var(--font-size-l);
-  color: var(--color-white);
-  background-color: hsla(var(--base-blue), 50%, 90%);
+  color: var(--text-color);
+  background-color: var(--primary-color);
 
   @media screen and (max-width: 1000px) {
     font-size: var(--font-size-s);
