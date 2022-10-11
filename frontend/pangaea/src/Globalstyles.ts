@@ -2,16 +2,34 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    --main-color: #3875CE;
-    --hover-background: rgba(56,117,206,0.08);
-    --header-color: #FAFAFA;
-    --border-color: #DADCE0;
-    --border-color-lighit: #E8E8E8;
-    --border-color-dark: #C6C8CC;
-    --font-main: #414141;
-    --font-sub: #5A5A5A;
-    --font-hint: #8C8C8C;
-    --font-hint-dark: #646464;
+    /* font size */
+    --font-size-s: 14px;
+    --font-size-m: 15px;
+    --font-size-l: 16px;
+
+    /* color */
+    --base-blue: 216, 60%;
+    --base-black: 0, 0%;
+    --base-white: 255, 0%;
+
+    --color-blue-light: hsla(var(--base-blue), 55%, 90%);
+    --color-blue: hsla(var(--base-blue), 40%, 100%);
+    --color-white: hsla(var(--base-white), 98%, 100%);
+
+    --color-bg-gray-deep: hsla(var(--base-black), 80%, 30%);
+    --color-bg-gray: hsla(var(--base-black), 90%, 20%);
+    --color-bg-gray-light: hsla(var(--base-black), 90%, 10%);
+
+    --color-border-deep: hsla(var(--base-black), 70%, 100%);
+    --color-border: hsla(var(--base-black), 80%, 100%);
+    --color-border-light: hsla(var(--base-black), 90%, 100%);
+
+    --color-font-deep: hsla(var(--base-black), 10%, 100%);
+    --color-font: hsla(var(--base-black), 30%, 100%);
+    --color-font-light: hsla(var(--base-black), 50%, 100%);
+
+    --color-hover-blue: hsla(var(--base-blue), 90%, 40%);
+    --color-hover-gray: hsla(var(--base-black), 90%, 40%);
   }
 
   @font-face {

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { StringLiteral } from 'typescript';
 import { Selector, OptionType } from '../../../UI/atoms/Selector';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -16,7 +15,9 @@ const standardInitialValues = {
 export function StandardContract() {
   return (
     <div id="content" className="content">
-      <PropertyForm />
+      <div className="room_info">
+        <PropertyForm />
+      </div>
     </div>
   );
 }

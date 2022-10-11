@@ -1,16 +1,24 @@
 import GlobalStyle from './Globalstyles';
 import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
-import { StandardContract } from './components/pages/contract/standard/standard';
+import Header from './components/UI/organisms/Header';
+import SideNavigation from './components/UI/organisms/SideNavigation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPeopleArrows } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <StandardContract />
+      <Header />
+      <SideNavigation />
     </>
   );
 }
+
+export const IconPeople = () => {
+  return <FontAwesomeIcon icon={faPeopleArrows} />;
+};
 
 const GridContainer = ({ children }: PropsWithChildren<unknown>) => {
   return <StyledGridContainer>{children}</StyledGridContainer>;

@@ -171,11 +171,6 @@ const StyledSelector = styled.div`
     &:after {
       transform: rotate(-135deg);
     }
-    .nice-select-dropdown {
-      opacity: 1;
-      pointer-events: auto;
-      transform: scale(1) translateY(0);
-    }
   }
 `;
 
