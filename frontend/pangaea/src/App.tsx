@@ -1,35 +1,31 @@
 import GlobalStyle from './Globalstyles';
-import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
-import Header from './components/UI/organisms/Header';
+import ContentHeader from './components/UI/organisms/ContentHeader';
 import SideNavigation from './components/UI/organisms/SideNavigation';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPeopleArrows } from '@fortawesome/free-solid-svg-icons';
+import { Content } from './components/UI/organisms/Content';
 
 function App() {
   return (
-    <>
+    <StyledGridContainer>
       <GlobalStyle />
       <SideNavigation />
-    </>
+      <StyledSection>
+        <ContentHeader />
+        <Content />
+      </StyledSection>
+    </StyledGridContainer>
   );
 }
 
-export const IconPeople = () => {
-  return <FontAwesomeIcon icon={faPeopleArrows} />;
-};
-
-const GridContainer = ({ children }: PropsWithChildren<unknown>) => {
-  return <StyledGridContainer>{children}</StyledGridContainer>;
-};
-
 const StyledGridContainer = styled.div`
-  display: grid;
-  grid-template-columns: 240px 240px 240px;
+  display: inline-flexbox;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+`;
 
-  @media screen and (max-width: 500px) {
-    grid-template-columns: 100px 1000px;
-  }
+const StyledSection = styled.div`
+  width: 100%;
 `;
 
 export default App;

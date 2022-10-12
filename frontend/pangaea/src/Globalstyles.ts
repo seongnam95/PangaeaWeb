@@ -20,9 +20,10 @@ const GlobalStyle = createGlobalStyle`
     --border-color: hsla(var(--base-black), 80%, 100%);
     --border-color-light: hsla(var(--base-black), 90%, 100%);
 
+    --primary-colors: 245, 30%;
     --primary-color: rgb(29, 27, 49);
-    --primary-color-light: rgb(197, 202, 233);
-    --primary-color-dark: rgb(48, 63, 159);
+    --primary-color: hsla(var( --base-black), 15%, 100%);
+    --primary-color-light: hsla(var( --base-black), 19%, 100%);
     --primary-text: rgb(33, 33, 33);
 
     --accent-color: rgb(83, 109, 254);    
@@ -35,6 +36,8 @@ const GlobalStyle = createGlobalStyle`
     --gray-color-dark: rgb(240, 240, 240);
 
     --shadow-color: rgb(155, 155, 155, 0.2);
+    --shadow-color-dark: rgb(180, 180, 180, 0.3);
+    --shadow-color-white: rgb(255, 255, 255, 0.3);
 
   }
 
