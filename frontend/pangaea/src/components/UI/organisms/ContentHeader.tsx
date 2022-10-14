@@ -16,7 +16,6 @@ const StyledContentHeader = styled.div<{ isOver?: boolean }>`
   background-color: var(--primary-color-dark);
   border-bottom: 1px solid var(--color-border-light);
   box-shadow: 0px 0px 8px 3px var(--shadow-color);
-  transition: height 0.1s ease-in-out;
   align-items: center;
 
   ${({ isOver }) =>

@@ -5,7 +5,7 @@ import { Manager } from 'pages/Manager';
 function App() {
   return (
     <StyledGridContainer>
-      <GlobalStyle darkMode={true} animation={false} />
+      <GlobalStyle darkMode={true} animation={true} />
       <Manager />
     </StyledGridContainer>
   );

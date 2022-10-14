@@ -30,7 +30,7 @@ const StyledManager = styled.div`
 
   .container {
     position: relative;
-    transition: left 0.35s ease-in-out;
+    transition: left var(--ease-in-out-35);
     left: 21rem;
   }
 

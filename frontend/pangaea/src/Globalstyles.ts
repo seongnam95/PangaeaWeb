@@ -52,6 +52,7 @@ const GlobalStyle = createGlobalStyle<styleTypeProps>`
       css`
         --ease-in-out-2: 0.2s ease-in-out;
         --ease-in-out-3: 0.3s ease-in-out;
+        --ease-in-out-35: 0.35s ease-in-out;
       `}
 
     --text-color: rgb(255, 255, 255);

@@ -75,7 +75,8 @@ const StyledNavItem = styled.li<{ activated: boolean; minimize: boolean }>`
   }
 
   .item-hint {
-    z-index: -1;
+    display: none;
+    z-index: 3;
     opacity: 0;
     position: absolute;
     height: 33px;
@@ -90,6 +91,7 @@ const StyledNavItem = styled.li<{ activated: boolean; minimize: boolean }>`
     background-color: #fff;
     transition: all var(--ease-in-out-3);
     transform: translateX(-30%);
+    pointer-events: none;
   }
 
   &:hover {
@@ -105,11 +107,14 @@ const StyledNavItem = styled.li<{ activated: boolean; minimize: boolean }>`
   ${({ minimize }) =>
     minimize &&
     css`
+      .item-hint {
+        display: flex;
+      }
       &:hover {
         .item-hint {
-          z-index: 9999;
           transform: translateX(0);
           opacity: 1;
+          pointer-events: auto;
         }
       }
     `}
