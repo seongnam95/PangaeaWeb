@@ -1,37 +1,50 @@
 import { ReactElement } from 'react';
 
-import * as icons from '../../../assets/svg';
+import * as icons from 'assets/svg';
+import styled, { css } from 'styled-components';
 
 export type IconType = keyof typeof icons;
 export const iconTypes: IconType[] = Object.keys(icons) as IconType[];
 
 export interface IconProps {
   icon: IconType;
-  color?: string;
-  size?: string | number;
   onClick?: () => void;
+  style?: {
+    color?: string;
+    size?: string;
+    hoverColor?: string;
+  };
 }
 
-const NORMAL_ICON_COLOR = '#fff';
-
-function Icon({ icon, color, size, onClick }: IconProps): ReactElement {
+function Icon({ icon, style, onClick }: IconProps): ReactElement {
   const SVGIcon = icons[icon];
-  const strokeColor = color || NORMAL_ICON_COLOR;
-  const widthPx =
-    size &&
-    (typeof size === 'number' ? `${size}px` : `${size.replace('px', '')}px`);
+  console.log(style);
 
   return (
-    <SVGIcon
-      onClick={onClick}
-      style={{
-        fill: strokeColor,
-        width: widthPx,
-        minWidth: widthPx,
-        height: 'auto',
-      }}
-    />
+    <StyledIconBox className="icon" {...style}>
+      <SVGIcon onClick={onClick} />
+    </StyledIconBox>
   );
 }
+
+type StyledIconType = {
+  color?: string;
+  hoverColor?: string;
+  size?: string;
+};
+
+const StyledIconBox = styled.div<StyledIconType>`
+  svg {
+    height: auto;
+    width: ${props => props.size || '2.4rem'};
+    min-width: ${props => props.size || '2.4rem'};
+    fill: ${props => props.color || '#373737'};
+    transition: all var(--ease-in-out-3);
+
+    :hover {
+      fill: ${props => props.hoverColor};
+    }
+  }
+`;
 
 export default Icon;

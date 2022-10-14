@@ -1,11 +1,18 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+interface styleTypeProps {
+  darkMode?: boolean;
+  animation?: boolean;
+}
+
+const GlobalStyle = createGlobalStyle<styleTypeProps>`
   :root {
+    font-size: 10px;
+
     /* font size */
-    --font-size-s: 14px;
-    --font-size-m: 15px;
-    --font-size-l: 16px;
+    --font-size-s: 1.4rem;
+    --font-size-m: 1.5rem;
+    --font-size-l: 1.6rem;
 
     /* color */
     --base-blue: 216, 60%;
@@ -20,13 +27,33 @@ const GlobalStyle = createGlobalStyle`
     --border-color: hsla(var(--base-black), 80%, 100%);
     --border-color-light: hsla(var(--base-black), 90%, 100%);
 
-    --primary-colors: 245, 30%;
-    --primary-color: rgb(29, 27, 49);
-    --primary-color: hsla(var( --base-black), 15%, 100%);
-    --primary-color-light: hsla(var( --base-black), 19%, 100%);
-    --primary-text: rgb(33, 33, 33);
+    ${({ darkMode }) =>
+      darkMode &&
+      css`
+        --primary-colors: 245, 30%;
+        --primary-color: rgb(29, 27, 49);
+        --primary-color: hsla(var(--base-black), 15%, 100%);
+        --primary-color-light: hsla(var(--base-black), 19%, 100%);
+        --primary-text: rgb(33, 33, 33);
+      `}
 
-    --accent-color: rgb(83, 109, 254);    
+    ${({ darkMode }) =>
+      !darkMode &&
+      css`
+        --primary-colors: 125, 30%;
+        --primary-color: rgb(29, 27, 49);
+        --primary-color: hsla(var(--base-black), 15%, 100%);
+        --primary-color-light: hsla(var(--base-black), 55%, 100%);
+        --primary-text: rgb(33, 33, 33);
+      `}
+
+    ${({ animation }) =>
+      animation &&
+      css`
+        --ease-in-out-2: 0.2s ease-in-out;
+        --ease-in-out-3: 0.3s ease-in-out;
+      `}
+
     --text-color: rgb(255, 255, 255);
     --text-sub-color: rgb(117, 117, 117);
     --divider-color: rgb(189, 189, 189);
@@ -39,6 +66,10 @@ const GlobalStyle = createGlobalStyle`
     --shadow-color-dark: rgb(180, 180, 180, 0.3);
     --shadow-color-white: rgb(255, 255, 255, 0.3);
 
+    -webkit-transform: translateX(0);
+		transform: translateX(0);
+	  transition: transform 300ms linear;
+	  will-change: transform;
   }
 
   @font-face {

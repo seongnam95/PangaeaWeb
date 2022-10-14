@@ -3,7 +3,7 @@ import { NavItem } from '../atoms/NavItem';
 import { useState } from 'react';
 import Icon, { IconType } from '../atoms/Icon';
 
-export default function SideNavigation() {
+export function SideNavigation() {
   const [isMinimize, setIsMinimize] = useState(false);
   const [isActivate, setIsActivate] = useState<string>();
 
@@ -14,8 +14,8 @@ export default function SideNavigation() {
   };
 
   const property_items: itemTypes[] = [
-    { value: 'solo', label: '매물 관리', icon: 'property' },
-    { value: 'group', label: '고객 관리', icon: 'people' },
+    { value: 'property', label: '매물 관리', icon: 'property' },
+    { value: 'client', label: '고객 관리', icon: 'people' },
   ];
 
   const clickedMenu = () => {
@@ -31,9 +31,11 @@ export default function SideNavigation() {
     <StyledSideNavigation className={isMinimize ? 'minimize' : ''}>
       <StyledHeader className="nav-header">
         <div className="nav-header logo">PANGAEA</div>
-        <div className="nav-header icon" onClick={clickedMenu}>
-          <Icon icon="menu" color="white" size="13px" />
-        </div>
+        <Icon
+          onClick={clickedMenu}
+          icon="menu"
+          style={{ color: '#FFF', size: '1.9rem' }}
+        />
       </StyledHeader>
       <ul>
         {property_items.map((item, idx) => (
@@ -53,17 +55,19 @@ export default function SideNavigation() {
 }
 
 const StyledSideNavigation = styled.div`
-  width: 210px;
-  height: 100vh;
+  position: fixed;
+  z-index: 9999;
+  width: 21rem;
+  height: 100%;
   background-color: var(--primary-color);
   border-right: 1px solid black;
   box-shadow: 0px 5px 8px 8px var(--shadow-color);
   -webkit-user-select: none;
   user-select: none;
-  transition: width 0.3s ease-in-out;
+  transition: width var(--ease-in-out-3);
 
   &.minimize {
-    width: 55px;
+    width: 5.5rem;
   }
 `;
 
@@ -71,22 +75,22 @@ const StyledHeader = styled.div`
   position: relative;
   display: flex;
   width: 100%;
-  height: 70px;
-  padding: 1em;
+  height: 7rem;
+  padding: 1.5rem;
   background-color: var(--primary-color);
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 
   .logo {
     overflow: hidden;
-    font-size: 22px;
+    font-size: 2.5rem;
     color: var(--text-color);
-    margin-right: 30px;
+    margin-right: 3rem;
   }
 
   .icon {
     position: absolute;
-    right: 19px;
+    right: 1.6rem;
     display: flex;
 
     svg {

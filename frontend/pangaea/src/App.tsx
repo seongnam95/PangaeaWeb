@@ -1,18 +1,12 @@
 import GlobalStyle from './Globalstyles';
 import styled from 'styled-components';
-import ContentHeader from './components/UI/organisms/ContentHeader';
-import SideNavigation from './components/UI/organisms/SideNavigation';
-import { Content } from './components/UI/organisms/Content';
+import { Manager } from 'pages/Manager';
 
 function App() {
   return (
     <StyledGridContainer>
-      <GlobalStyle />
-      <SideNavigation />
-      <StyledSection>
-        <ContentHeader />
-        <Content />
-      </StyledSection>
+      <GlobalStyle darkMode={true} animation={false} />
+      <Manager />
     </StyledGridContainer>
   );
 }

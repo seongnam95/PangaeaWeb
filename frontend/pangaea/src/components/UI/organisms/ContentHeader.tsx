@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
-export default function ContentHeader() {
+export function ContentHeader() {
   const [isOver, setIsOver] = useState(false);
 
   return <StyledContentHeader isOver={isOver}></StyledContentHeader>;
 }
 
 const StyledContentHeader = styled.div<{ isOver?: boolean }>`
+  left: 50%;
   display: flex;
   width: 100%;
   height: 60px;
