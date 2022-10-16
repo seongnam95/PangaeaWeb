@@ -1,5 +1,7 @@
+import { StateLabel } from 'components/atoms/StateLabel';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { LabelGroup } from './LabelGroup';
 
 export interface PropertyItemProps {
   value: {
@@ -40,7 +42,11 @@ export interface PropertyItemProps {
 
 export function PropertyItem(props: PropertyItemProps) {
   const [values, setValues] = useState<PropertyItemProps>(props);
-  let parseValue = parsingValue(values);
+  let pv = parsingValue(values);
+
+  useEffect(() => {
+    setValues(props);
+  }, [props]);
 
   const handleOnClick = () => {
     if (props.onClick) props.onClick(values);
@@ -48,10 +54,12 @@ export function PropertyItem(props: PropertyItemProps) {
 
   return (
     <StyledPropertyItem onClick={handleOnClick}>
-      <Label>{parseValue.address.full}</Label>
-      <Label>{parseValue.address.name}</Label>
-      <Label>{parseValue.address.bunJi}</Label>
-      <Label>{parseValue.address.dongHo}</Label>
+      <Label>{pv.situation}</Label>
+      <LabelGroup labels={pv.situation} />
+      <Label>{pv.address.full}</Label>
+      <Label>{pv.address.name}</Label>
+      <Label>{pv.address.bunJi}</Label>
+      <Label>{pv.address.dongHo}</Label>
     </StyledPropertyItem>
   );
 }
@@ -60,6 +68,7 @@ const parsingValue = (props: PropertyItemProps) => {
   let adr = props.value.address;
 
   let value = {
+    situation: props.value.situation,
     address: {
       full: [
         [adr.siNm, adr.sggNm, adr.emdNm, adr.liNm].join(' '),

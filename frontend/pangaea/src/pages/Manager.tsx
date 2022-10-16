@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { PropertyMgr, ClientMgr } from 'pages/contents';
-import { SideNavigation, ContentHeader } from 'components/UI/organisms';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { SideNavigation, ContentHeader } from 'components/organisms';
+import { AnimatePresence } from 'framer-motion';
 
 export function Manager() {
   return (
@@ -12,11 +12,13 @@ export function Manager() {
         <div className="container">
           <ContentHeader />
           <div className="content">
-            <Routes>
-              <Route path="/" element={<PropertyMgr />} />
-              <Route path="/property" element={<PropertyMgr />} />
-              <Route path="/client" element={<ClientMgr />} />
-            </Routes>
+            <AnimatePresence>
+              <Routes>
+                <Route path="/" element={<PropertyMgr />} />
+                <Route path="/property" element={<PropertyMgr />} />
+                <Route path="/client" element={<ClientMgr />} />
+              </Routes>
+            </AnimatePresence>
           </div>
         </div>
       </BrowserRouter>

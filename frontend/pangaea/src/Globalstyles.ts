@@ -10,9 +10,12 @@ const GlobalStyle = createGlobalStyle<styleTypeProps>`
     font-size: 10px;
 
     /* font size */
+    --font-size-xs: 1.3rem;
     --font-size-s: 1.4rem;
     --font-size-m: 1.5rem;
     --font-size-l: 1.6rem;
+    --font-size-xl: 1.7rem;
+    --font-size-2xl: 1.8rem;
 
     /* color */
     --base-blue: 216, 60%;
@@ -73,14 +76,14 @@ const GlobalStyle = createGlobalStyle<styleTypeProps>`
 	  will-change: transform;
   }
 
-  @font-face {
-    font-family: 'Nanum Gothic';
-    font-style: normal;
-    font-weight: 300;
-    src: url("../src/assets/fonts/NanumGothicLight.woff2") format('font-woff2'),
-    url("../src/assets/fonts/NanumGothicLight.woff") format('font-woff'),
-    url("../src/assets/fonts/NanumGothicLight.otf") format('otf')
-  }
+    @font-face {
+      font-family: 'Nanum Gothic';
+      font-style: normal;
+      font-weight: 300;
+      src: url("../src/assets/fonts/NanumGothicLight.woff2") format('font-woff2'),
+      url("../src/assets/fon/*  */ts/NanumGothicLight.woff") format('font-woff'),
+      url("../*  *//src/assets/fonts/NanumGothicLight.otf") format('otf')
+    }
 
   @font-face {
     font-family: 'Nanum Gothic';

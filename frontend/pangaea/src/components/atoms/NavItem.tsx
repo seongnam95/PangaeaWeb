@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import Icon, { IconType } from '../atoms/Icon';
+import Icon, { IconType } from './Icon';
 
 export interface NavItemProps {
   value: string;

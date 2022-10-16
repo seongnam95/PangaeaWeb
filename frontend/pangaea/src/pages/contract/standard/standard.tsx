@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Selector, OptionType } from '../../../components/UI/atoms/Selector';
+import { Selector, OptionType } from '../../../components/atoms/Selector';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import Input from '../../../components/UI/atoms/Input';
+import Input from '../../../components/atoms/Input';
 import './standard.scss';
 
 const ValidationSchema = Yup.object().shape({});
