@@ -68,7 +68,7 @@ const StyledNavItem = styled.li<{ activated: boolean; minimize: boolean }>`
   }
 
   .item-label {
-    color: var(--text-color);
+    color: var(--nav-text);
     font-size: var(--font-size-s);
     overflow: hidden;
     white-space: nowrap;
@@ -80,7 +80,7 @@ const StyledNavItem = styled.li<{ activated: boolean; minimize: boolean }>`
     opacity: 0;
     position: absolute;
     height: 33px;
-    color: var(--text-sub-color);
+    color: var(--nav-text);
     font-size: var(--font-size-s);
     border: 1px solid var(--border-color);
     border-radius: 5px;
@@ -95,13 +95,13 @@ const StyledNavItem = styled.li<{ activated: boolean; minimize: boolean }>`
   }
 
   &:hover {
-    background-color: var(--primary-color-light);
+    background-color: var(--nav-color-light);
   }
 
   ${({ activated }) =>
     activated &&
     css`
-      background-color: var(--primary-color-light);
+      background-color: var(--nav-color-light);
     `}
 
   ${({ minimize }) =>

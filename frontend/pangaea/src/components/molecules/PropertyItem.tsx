@@ -1,4 +1,3 @@
-import { StateLabel } from 'components/atoms/StateLabel';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { LabelGroup } from './LabelGroup';

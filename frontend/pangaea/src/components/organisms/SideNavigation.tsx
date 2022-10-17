@@ -59,7 +59,7 @@ const StyledSideNavigation = styled.div`
   z-index: 9999;
   width: 21rem;
   height: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--nav-color);
   border-right: 1px solid black;
   box-shadow: 0px 5px 8px 8px var(--shadow-color);
   -webkit-user-select: none;
@@ -77,14 +77,14 @@ const StyledHeader = styled.div`
   width: 100%;
   height: 7rem;
   padding: 1.5rem;
-  background-color: var(--primary-color);
+  background-color: var(--nav-color);
   align-items: center;
   margin-bottom: 2rem;
 
   .logo {
     overflow: hidden;
     font-size: 2.5rem;
-    color: var(--text-color);
+    color: var(--nav-text);
     margin-right: 3rem;
   }
 

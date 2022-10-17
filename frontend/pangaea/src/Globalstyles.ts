@@ -33,19 +33,27 @@ const GlobalStyle = createGlobalStyle<styleTypeProps>`
     ${({ darkMode }) =>
       darkMode &&
       css`
-        --primary-colors: 245, 30%;
-        --primary-color: rgb(29, 27, 49);
-        --primary-color: hsla(var(--base-black), 15%, 100%);
-        --primary-color-light: hsla(var(--base-black), 19%, 100%);
+        --nav-base: 0, 0%;
+        --nav-color: hsla(var(--nav-base), 15%, 100%);
+        --nav-color-light: hsla(var(--nav-base), 30%, 30%);
+        --nav-text: hsla(var(--nav-base), 95%, 100%);
+
+        --primary-base: 208, 80%;
+        --primary-color: hsla(var(--primary-base), 52%, 100%);
+        --primary-color-light: hsla(var(--primary-base), 30%, 30%);
         --primary-text: rgb(33, 33, 33);
       `}
 
     ${({ darkMode }) =>
       !darkMode &&
       css`
-        --primary-colors: 125, 30%;
-        --primary-color: rgb(29, 27, 49);
-        --primary-color: hsla(var(--base-black), 15%, 100%);
+        --nav-base: 0, 0%;
+        --nav-color: hsla(var(--nav-base), 15%, 100%);
+        --nav-color-light: hsla(var(--nav-base), 30%, 30%);
+        --nav-text: hsla(var(--nav-base), 95%, 100%);
+
+        --primary-base: 199, 95%;
+        --primary-color: hsla(var(--primary-base), 31%, 100%);
         --primary-color-light: hsla(var(--base-black), 55%, 100%);
         --primary-text: rgb(33, 33, 33);
       `}

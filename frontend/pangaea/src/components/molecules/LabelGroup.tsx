@@ -1,4 +1,4 @@
-import { StateLabel } from 'components/atoms/StateLabel';
+import { Chip } from 'components/atoms/Chip';
 import styled from 'styled-components';
 
 interface LabelGroupProps {
@@ -9,7 +9,7 @@ export function LabelGroup(props: LabelGroupProps) {
   return (
     <StyledLabelGroup>
       {props.labels.map((value, idx) => (
-        <StateLabel key={idx} label={value} />
+        <Chip key={idx} label={value} />
       ))}
     </StyledLabelGroup>
   );
