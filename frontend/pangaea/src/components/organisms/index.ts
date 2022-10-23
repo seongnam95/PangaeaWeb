@@ -1,2 +1,2 @@
-export { SideNavigation } from './SideNavigation';
-export { ContentHeader } from './ContentHeader';
+export { Navigation } from './Navigation';
+export { ContentHeader } from './Header';

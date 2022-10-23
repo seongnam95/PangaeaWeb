@@ -1,0 +1,79 @@
+{
+  "property": [
+    {
+      "pk": "1",
+      "imgUrl": "https://image.hanssem.com/hsimg/upload/display/planshop/2020/11/06/1604649462844_0.jpg",
+      "tag": {
+        "pet": true,
+        "parking": true,
+        "ev": true
+      },
+      "address": {
+        "full": "서울특별시 중랑구 면목동 90-27번지, 702호",
+        "siNm": "서울특별시",
+        "sggNm": "중랑구",
+        "emdNm": "면목동",
+        "bun": "90",
+        "ji": "27",
+        "ho": "702호",
+        "layer": "7"
+      },
+      "dealType": 0,
+      "price": {
+        "amount": 350000000,
+        "adminCost": 70000
+      },
+      "property": {
+        "kind": 0,
+        "publicArea": 38.2,
+        "area": 29.7,
+        "crtFloor": 7,
+        "topFloor": 8,
+        "roomCount": 2,
+        "bathroomCount": 1
+      },
+      "master": {
+        "name": "장성남",
+        "business": "하울공인중개사",
+        "businessCode": "11260"
+      }
+    },
+    {
+      "pk": "2",
+      "imgUrl": "https://file.moongori.com/firstmall/data/board/writer/resize_f8a098e095ece427b72a75e67facceb80814434.jpg",
+      "tag": {
+        "parking": true,
+        "ev": true
+      },
+      "address": {
+        "full": "서울특별시 중랑구 면목동 90-26번지, 301호",
+        "siNm": "서울특별시",
+        "sggNm": "중랑구",
+        "emdNm": "면목동",
+        "bun": "90",
+        "ji": "26",
+        "ho": "301호",
+        "layer": "3"
+      },
+      "dealType": 2,
+      "price": {
+        "amount": 100000000,
+        "rent": 550000,
+        "adminCost": 60000,
+        "loan": 130000000
+      },
+      "property": {
+        "kind": 0,
+        "publicArea": 34.56,
+        "area": 26.92,
+        "crtFloor": 3,
+        "topFloor": 8
+      },
+      "master": {
+        "name": "장성남",
+        "business": "하울공인중개사",
+        "businessCode": "11260"
+      }
+    }
+  ]
+}
