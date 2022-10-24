@@ -3,6 +3,7 @@ export { Check } from './Check';
 export { Chip } from './Chip';
 export { DateSelect } from './DateSelect';
 export { Icon } from './Icon';
+export { Image } from './Image';
 export { Input } from './Input';
 export { LabelSelect } from './LabelSelect';
 export { Radio } from './Radio';

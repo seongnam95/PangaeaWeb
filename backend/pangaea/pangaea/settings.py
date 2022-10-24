@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'sass_processor',
     'rest_framework',
     'rest_framework_api_key',
-    'pangaeaApi',
+    'handy',
     'corsheaders',
 ]
 

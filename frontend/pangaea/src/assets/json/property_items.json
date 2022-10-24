@@ -15,8 +15,7 @@
         "emdNm": "면목동",
         "bun": "90",
         "ji": "27",
-        "ho": "702호",
-        "layer": "7"
+        "ho": "702호"
       },
       "dealType": 0,
       "price": {
@@ -25,12 +24,13 @@
       },
       "property": {
         "kind": 0,
+        "detailed": 0,
         "publicArea": 38.2,
         "area": 29.7,
         "crtFloor": 7,
         "topFloor": 8,
         "roomCount": 2,
-        "bathroomCount": 1
+        "toiletCount": 1
       },
       "master": {
         "name": "장성남",
@@ -52,8 +52,7 @@
         "emdNm": "면목동",
         "bun": "90",
         "ji": "26",
-        "ho": "301호",
-        "layer": "3"
+        "ho": "301호"
       },
       "dealType": 2,
       "price": {
@@ -64,10 +63,13 @@
       },
       "property": {
         "kind": 0,
+        "detailed": 0,
         "publicArea": 34.56,
         "area": 26.92,
         "crtFloor": 3,
-        "topFloor": 8
+        "topFloor": 8,
+        "roomCount": 2,
+        "toiletCount": 1
       },
       "master": {
         "name": "장성남",

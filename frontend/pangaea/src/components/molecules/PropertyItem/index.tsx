@@ -1,18 +1,27 @@
+import { Chip } from 'components/atoms';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Chip } from 'components/atoms/Chip';
+
+import { Apartment, Housing, Land, Shop, Studio } from './Category';
+import {
+  ApartmentType,
+  HousingType,
+  LandType,
+  ShopType,
+  StudioType,
+} from './Category';
 
 export interface PropertyItemProps {
   pk: string;
-  imgUrl: string;
-  situation?: {
-    ad: boolean;
-  };
-  tag?: {
-    pet?: boolean;
-    parking?: boolean;
-    ev?: boolean;
-  };
+  imgUrl?: string;
+  transaction: number;
+
+  housing?: HousingType;
+  land?: LandType;
+  apart?: ApartmentType;
+  shop?: ShopType;
+  studio?: StudioType;
+
   address: {
     full: string;
     siNm?: string;
@@ -23,28 +32,22 @@ export interface PropertyItemProps {
     ji?: string;
     dong?: string;
     ho?: string;
-    layer?: string;
     detail?: string;
   };
-  dealType: number;
+
   price: {
     amount: number;
     rent?: number;
-    adminCost?: number;
+    admin?: number;
     loan?: number;
   };
-  property: {
-    kind: number;
-    publicArea: number;
-    area: number;
-    crtFloor: number;
-    topFloor: number;
-  };
+
   master: {
     name?: string;
     business: string;
     businessCode: string;
   };
+
   onClick?: (v: PropertyItemProps) => void;
 }
 
@@ -55,105 +58,21 @@ export function PropertyItem(props: PropertyItemProps) {
     setValues(props);
   }, [props]);
 
-  const numberToKorean = (number: number) => {
-    var inputNumber = number < 0 ? false : number;
-    var unitWords = ['', '만', '억', '조', '경'];
-    var splitUnit = 10000;
-    var splitCount = unitWords.length;
-    var resultArray = [];
-    var resultString = '';
-
-    for (var i = 0; i < splitCount; i++) {
-      var unitResult =
-        (+inputNumber % Math.pow(splitUnit, i + 1)) / Math.pow(splitUnit, i);
-      unitResult = Math.floor(unitResult);
-      if (unitResult > 0) {
-        resultArray[i] = unitResult;
-      }
-    }
-
-    for (var i = 0; i < resultArray.length; i++) {
-      if (!resultArray[i]) continue;
-      resultString = String(resultArray[i]) + unitWords[i] + ' ' + resultString;
-    }
-
-    return resultString;
-  };
-
   return (
     <StyledPropertyItem
       onClick={() => {
-        if (props.onClick) props.onClick(values);
+        if (values.onClick) values.onClick(values);
       }}
     >
-      <div className="img-box">
-        <img style={{ width: '100%', height: '100%' }} src={props.imgUrl} />
-        <div className="img-header"></div>
-      </div>
+      {/* Image box */}
+      {values.imgUrl ? (
+        <div className="img-box">
+          <img src={values.imgUrl} />
+          <div className="img-header"></div>
+        </div>
+      ) : null}
 
-      <div className="content">
-        <div className="header">
-          <div className="chip-group">
-            {props.tag.pet ? <Chip icon="dog" /> : null}
-            {props.tag.ev ? <Chip icon="elevator" /> : null}
-            {props.tag.parking ? <Chip icon="car" /> : null}
-          </div>
-        </div>
-        <div className="wrap">
-          <div className="section-left">
-            <div className="amount">
-              <p>
-                {props.dealType === 0
-                  ? '매매'
-                  : props.dealType === 1
-                  ? '전세'
-                  : props.dealType === 2
-                  ? '월세'
-                  : ''}
-              </p>
-              <p>{numberToKorean(props.price.amount)}</p>
-              {props.price.rent ? (
-                <p>/ {numberToKorean(props.price.rent)}</p>
-              ) : null}
-            </div>
-            <div className="address">
-              <p>{props.address.full}</p>
-            </div>
-          </div>
-          <div className="section-right">
-            <p className="name">공급/전용면적</p>
-            <p className="value">
-              {props.property.publicArea} ㎡ / {props.property.area} ㎡
-            </p>
-            <p className="name">해당층/최상층</p>
-            <p className="value">
-              {props.property.crtFloor} 층 / {props.property.topFloor} 층
-            </p>
-          </div>
-          <div className="section-footer">
-            <Chip
-              label="다세대"
-              color="var(--gray-600)"
-              bgColor="var(--gray-200)"
-            />
-            <Chip
-              label="빌라"
-              color="var(--gray-600)"
-              bgColor="var(--gray-200)"
-            />
-            <Chip
-              label="방 2개"
-              color="var(--gray-600)"
-              bgColor="var(--gray-200)"
-            />
-            <Chip
-              label="욕실 1개"
-              color="var(--gray-600)"
-              bgColor="var(--gray-200)"
-            />
-          </div>
-        </div>
-      </div>
+      {/* Content */}
     </StyledPropertyItem>
   );
 }
@@ -173,8 +92,9 @@ const StyledPropertyItem = styled.li`
     position: relative;
     flex-grow: 0;
     min-width: 22rem;
+    width: 22rem;
+    height: 100%;
     background-color: var(--gray-100);
-    overflow: hidden;
 
     & > img {
       width: 100%;
@@ -186,7 +106,6 @@ const StyledPropertyItem = styled.li`
       width: 100%;
       height: 4rem;
       top: 0;
-      left: 0;
       background-color: rgba(255, 255, 255, 0.4);
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow-gray-300);
@@ -262,3 +181,28 @@ const StyledPropertyItem = styled.li`
     }
   }
 `;
+
+const numberToKorean = (number: number) => {
+  var inputNumber = number < 0 ? false : number;
+  var unitWords = ['', '만', '억', '조', '경'];
+  var splitUnit = 10000;
+  var splitCount = unitWords.length;
+  var resultArray = [];
+  var resultString = '';
+
+  for (var i = 0; i < splitCount; i++) {
+    var unitResult =
+      (+inputNumber % Math.pow(splitUnit, i + 1)) / Math.pow(splitUnit, i);
+    unitResult = Math.floor(unitResult);
+    if (unitResult > 0) {
+      resultArray[i] = unitResult;
+    }
+  }
+
+  for (var i = 0; i < resultArray.length; i++) {
+    if (!resultArray[i]) continue;
+    resultString = String(resultArray[i]) + unitWords[i] + ' ' + resultString;
+  }
+
+  return resultString;
+};

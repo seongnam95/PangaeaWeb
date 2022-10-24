@@ -9,9 +9,7 @@ import propertyJson from 'assets/json/property_items.json';
 export function PropertyMgr() {
   const [property, setProperty] = useState<PropertyItemProps[]>([]);
 
-  useEffect(() => {
-    setProperty(propertyJson.property);
-  }, []);
+  useEffect(() => {}, []);
 
   const handleOnClick = (v: PropertyItemProps) => {
     // console.log(v.value);
